@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins');
+
+body {
+  font-family: 'Robbins', sans-serif;
+  margin: 0;
+  background-color: #1c2333ff;
+  height: 100%;
+  margin-top: 2vh;
+}
+
+#gameDiv {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  margin-right: 10px;
+}
+
+.buttonDiv {
+  animation-timing-function: linear;
+  animation-duration: 5s;
+  animation-name: open;
+  font-size: 5vw;
+  margin-left: 10px;
+  margin-right: 10px;
+  user-select: none;
+  -webkit-user-select: none;
+  padding: 2vh;
+  height: 9vw;
+  cursor: pointer;
+  color: #f7ffbd;
+  border: 2px solid #75ff1a;
+  border-radius: 10px;
+  transition-duration: .1s;
+  margin-bottom: 20px;
+
+}
+
+.buttonDiv:hover {
+  box-shadow: 0 10px 20px #75ff1a;
+  transform: translateY(-5px);
+}
+
+.buttonDiv:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+
