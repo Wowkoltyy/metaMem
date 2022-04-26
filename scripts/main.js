@@ -15,7 +15,7 @@ let grid = emojis.slice(0, width*height/2)
 $("#reload").click(play)
 $("#reload").click()
 
-
+let timerOn = false;
 
 function checkWin(){
   let x = true
@@ -34,13 +34,20 @@ function timer(){
     return timerLabel.text(t)
   }
   time = 0
+
   clearInterval(timerInterval)
 }
 
-function play() {
+function startTimer(){
   time = 0
-  clearInterval(timerInterval)
   timerInterval = setInterval(timer, 10)
+}
+
+function play() {
+
+  clearInterval(timerInterval)
+  timerLabel.text("0.00")
+  
   const height = Number(document.getElementById("height").value)
   $("#gameDiv").children().remove()
   
@@ -53,11 +60,12 @@ function play() {
   grid.sort(() => 0.5 - Math.random())
   
   let steps = 0
+  $("#steps").text("0")
   let previous
   let recentClicked = false
   
   $(".pic").click(async function() {
-    
+    if(timerLabel.text() === "0.00") startTimer()
     let jelement = $(this)
     if(jelement.text() !== placeHolder || recentClicked) return
     jelement.css('transform','scale(-0.001, 1)')
@@ -88,7 +96,6 @@ function play() {
   })
   
 }
-
 
 function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms))
