@@ -20,20 +20,20 @@
   <div id="gameDiv">
   </div>
 
-  <div style="margin-bottom: 5vh" class="buttonDiv">  
-    <a href="/highscores" style="color: #f7ffbd;" id="playername">
+  <div style="margin-bottom: 5vh" class="buttonDiv" onclick="location.href += location.href.slice(-1) == '/' ? 'highscores' : '/highscores'">  
+    <a style="color: #f7ffbd;" id="playername">
   Введите имя
     </a>
   </div>
     
-  <div style="margin-bottom: 5vh" class="buttonDiv">  
-    <a href="/highscores" style="color: #f7ffbd;">
+  <div style="margin-bottom: 5vh" class="buttonDiv" onclick="location.href += location.href.slice(-1) == '/' ? 'highscores' : '/highscores'">  
+    <a style="color: #f7ffbd;">
   Посмотреть таблицу рекордов
     </a>
   </div>
     
-  <div style="margin-bottom: 5vh" class="buttonDiv" >  
-  <a href="https://metagames.cf/" style="color: #f7ffbd;">Все наши игры здесь - metagames.cf</a> 
+  <div style="margin-bottom: 5vh" class="buttonDiv" onclick="location.href = 'https://metagames.cf/'" >  
+  <a style="color: #f7ffbd;">Все наши игры здесь - metagames.cf</a> 
   </div>
   </center>
 

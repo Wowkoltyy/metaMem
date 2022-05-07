@@ -17,7 +17,7 @@ let name = localStorage.getItem("memName")
 
 if(name !== null){
   document.getElementById("playername").innerHTML = `Ваше имя: ${name}`
-  document.getElementById("playername").removeAttribute("href")
+  document.getElementById("playername").parentElement.removeAttribute("onclick")
 }
   
 
