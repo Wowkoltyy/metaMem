@@ -12,13 +12,26 @@
 
 <body>
   <center>
-  <div class="buttonDiv" style="aspect-ratio: auto;" id="reload">🔄</div>
-    <label class="buttonDiv" style="aspect-ratio: auto; background-color: transparent; width: 60vw;" id="steps"></label>
-  <input class="buttonDiv" type="number" style="aspect-ratio: auto; background-color: transparent; width: 30vw;" id="height" value="3" max="8"></input>
-        <label class="buttonDiv" style="aspect-ratio: auto; background-color: transparent; width: 40vw;" id="timer"></label><br>
-    <br>
+    <div class="buttonDiv" style="aspect-ratio: auto;" id="reload">🔄</div>
+      <label class="buttonDiv" style="aspect-ratio: auto; background-color: transparent; width: 60vw;" id="steps"></label>
+    <input class="buttonDiv" type="number" style="aspect-ratio: auto; background-color: transparent; width: 30vw; -webkit-user-select: text;" id="height" value="3" max="8">
+          <label class="buttonDiv" style="aspect-ratio: auto; background-color: transparent; width: 40vw;" id="timer"></label><br>
+      <br>
   <div id="gameDiv">
   </div>
+
+  <div style="margin-bottom: 5vh" class="buttonDiv">  
+    <a href="/highscores" style="color: #f7ffbd;" id="playername">
+  Введите имя
+    </a>
+  </div>
+    
+  <div style="margin-bottom: 5vh" class="buttonDiv">  
+    <a href="/highscores" style="color: #f7ffbd;">
+  Посмотреть таблицу рекордов
+    </a>
+  </div>
+    
   <div style="margin-bottom: 5vh" class="buttonDiv" >  
   <a href="https://metagames.cf/" style="color: #f7ffbd;">Все наши игры здесь - metagames.cf</a> 
   </div>

@@ -14,13 +14,42 @@ body {
   margin-right: 10px;
 }
 
+table {
+  border: 2px solid #75ff1a;
+  border-radius: 10px;
+  width: 98vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-bottom: 1vw;
+  font-size: 2.5vw;
+}
+
+tr {
+  border: 2px solid #75ff1a;
+  
+}
+tr:nth-child(even) {
+  background-color: #ffffff13;
+}
+
+tr:hover {
+  background-color: #ffffff2f;
+}
+td {
+  text-align: center;
+}
+
+td {
+  border-radius: 10px;
+}
+
 .buttonDiv {
   animation-timing-function: linear;
   animation-duration: 5s;
   animation-name: open;
   font-size: 5vw;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 1vw;
+  margin-right: 1vw;
   user-select: none;
   -webkit-user-select: none;
   padding: 2vh;

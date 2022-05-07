@@ -6,9 +6,26 @@ let time = 0
 const timerLabel = $("#timer")
 let timerInterval
 
+let steps = 0
+
+const bigNumber = 1e10
+
+let localhighest = localStorage.getItem('memHighest')
+if(!localhighest)localStorage.setItem('memHighest', JSON.stringify({1: {time: bigNumber, steps: bigNumber}, 2: {time: bigNumber, steps: bigNumber}, 3: {time: bigNumber, steps: bigNumber}, 4: {time: bigNumber, steps: bigNumber}, 5: {time: bigNumber, steps: bigNumber}, 6: {time: bigNumber, steps: bigNumber}, 7: {time: bigNumber, steps: bigNumber}, 8: {time: bigNumber, steps: bigNumber}}))
+localhighest = JSON.parse(localStorage.getItem("memHighest"))
+let name = localStorage.getItem("memName")
+
+if(name !== null){
+  document.getElementById("playername").innerHTML = `Ваше имя: ${name}`
+  document.getElementById("playername").removeAttribute("href")
+}
+  
+
 const placeHolder = "ㅤ"
 
 const gameDiv = $("#gameDiv")
+
+let height
 
 let grid = emojis.slice(0, width*height/2)
 
@@ -33,8 +50,26 @@ function timer(){
     time = Number(t)
     return timerLabel.text(t)
   }
-  time = 0
 
+  if(localhighest[height].time > time){
+    localhighest[height] = {time: time, steps: steps}
+    localStorage.setItem("memHighest", JSON.stringify(localhighest))
+    name = localStorage.getItem("memName")
+    if(name !== null)
+      
+      fetch("https://server.metagames.cf/mem/set", {
+        method: "POST",
+        headers: {
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          data: localhighest
+        })
+      })
+      }
+  time = 0
+  
   clearInterval(timerInterval)
 }
 
@@ -48,7 +83,7 @@ function play() {
   clearInterval(timerInterval)
   timerLabel.text("0.00")
   
-  const height = Number(document.getElementById("height").value)
+  height = Number(document.getElementById("height").value)
   $("#gameDiv").children().remove()
   
   for(let i = 0; i < height*width; i++){
@@ -59,7 +94,7 @@ function play() {
   grid.push(...grid)
   grid.sort(() => 0.5 - Math.random())
   
-  let steps = 0
+  steps = 0
   $("#steps").text("0")
   let previous
   let recentClicked = false
