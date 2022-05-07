@@ -7,7 +7,8 @@ document.getElementById("submitName").addEventListener("click", async () => {
   name = document.getElementById("name").value
   if(name.length > 0){
     localStorage.setItem("memName", name)
-
+    document.getElementById('submitName').innerHTML = 'Загрузка...'
+    
     let x = await fetch("https://server.metagames.cf/mem/get", {
       method: "GET",
       headers:{
@@ -39,6 +40,9 @@ window.onload = async () => {
     document.getElementById("enterName").style.display = 'block'
   }
   else{
+    let tbody = $("tbody")
+    let loading = $("#loading")
+    loading.text("Загрузка...")
     let r = await fetch("https://server.metagames.cf/mem/getAll", {
       method: 'GET',
       headers:{
@@ -71,10 +75,10 @@ window.onload = async () => {
           tr.append($("<td/>", {text: key}))
           tr.append($("<td/>", {text: obj.time}))
           tr.append($("<td/>", {text: obj.steps}))
-          $("tbody").append(tr)
+          tbody.append(tr)
           i++
         }
-    
+    loading.text("")
   }
   
   
