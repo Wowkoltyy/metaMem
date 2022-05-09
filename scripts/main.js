@@ -90,6 +90,7 @@ function play() {
     gameDiv.append($("<div/>", {class: "buttonDiv pic", text: placeHolder}))
   }
   
+  
   grid = emojis.slice(0, width*height/2)
   grid.push(...grid)
   grid.sort(() => 0.5 - Math.random())
