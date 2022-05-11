@@ -24,17 +24,23 @@ document.getElementById("submitName").addEventListener("click", async () => {
       data = "Error"
     })
     if(!data)data = await x.text()
+    
 
     if(data === "Error")
-    await fetch("https://server.metagames.cf/mem/set", {
-      method: "POST",
-      headers: {
-        "Content-Type":"application/json"
-      },
-      body: JSON.stringify({
-        name: name,
-        data: JSON.parse(localStorage.getItem('memHighest')) || stdData)
-    })
+      await fetch("https://server.metagames.cf/mem/set", {
+        method: "POST",
+        headers: {
+          "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+          name: name,
+          data: JSON.parse(localStorage.getItem('memHighest')) || stdData
+        })
+      })
+    else
+      for(let i = 1; i <= 18; i++){
+        if(!data[i])data[i] = {time: bigNumber, steps: bigNumber}
+      }
     document.getElementById("enterName").style.display = 'none'
       table.style.display = 'table'
     window.onload()
