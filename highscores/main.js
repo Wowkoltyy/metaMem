@@ -1,7 +1,12 @@
 let table = document.getElementById("highscore") 
 let name = document.getElementById("name").value
 
-const bigNumber = 1e10
+const bigNumber = 1e6
+
+let stdData = {}
+for(let i = 1; i <= 18; i++){
+  stdData[i] = {time: bigNumber, steps: bigNumber}
+}
 
 document.getElementById("submitName").addEventListener("click", async () => {
   name = document.getElementById("name").value
@@ -28,8 +33,7 @@ document.getElementById("submitName").addEventListener("click", async () => {
       },
       body: JSON.stringify({
         name: name,
-        data: JSON.parse(localStorage.getItem('memHighest')) || {1: {time: bigNumber, steps: bigNumber}, 2: {time: bigNumber, steps: bigNumber}, 3: {time: bigNumber, steps: bigNumber}, 4: {time: bigNumber, steps: bigNumber}, 5: {time: bigNumber, steps: bigNumber}, 6: {time: bigNumber, steps: bigNumber}, 7: {time: bigNumber, steps: bigNumber}, 8: {time: bigNumber, steps: bigNumber}}
-      })
+        data: JSON.parse(localStorage.getItem('memHighest')) || stdData)
     })
     document.getElementById("enterName").style.display = 'none'
       table.style.display = 'table'
@@ -57,7 +61,7 @@ window.onload = async () => {
     for(let [key, value] of f){
       let v = Object.entries(value)
       for(let [row, data] of v){
-        if(data.time != bigNumber){
+        if(data.time < bigNumber){
           if(!h[row])h[row] = []
           h[row].push({...data, name: key})
         }
@@ -65,7 +69,7 @@ window.onload = async () => {
     }
     let he = Object.entries(h)
     for(let [row, data] of he){
-      h[row] = data.sort((a, b) => a.time - b.time)
+      h[row] = data.sort((a, b) => a.time * a.steps - b.time * b.steps)
     }
     let hx = Object.entries(h).reverse()
     let i = 1

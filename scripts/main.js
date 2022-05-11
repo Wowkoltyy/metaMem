@@ -1,4 +1,4 @@
-const emojis = ['🎈', '🎨', '🎃', '🎁', '🎀', '💎', '🎲', '⛏', '🍕', '🍩', '🍬', '🍓', '🥝', '🍏', '❤', '✨', '✔', '🎵', '📌', '🍉', '🚘', '🛩', '⏰', '🌦']
+const emojis = ["🎈", "🎨", "🎃", "🎁", "🎀", "💎", "🎲", "⛏", "🍕", "🍩", "🍬", "🍓", "🥝", "🍏", "❤", "✨", "✔", "🎵", "📌", "🍉", "🚘", "🛩", "⏰", "🌦", "✌", "😂", "😝", "😁", "😱", "👉", "🙌", "🍻", "🔥", "🌈", "☀", "🌹", "💄", "⚽", "🎾", "🏁", "😡", "👿", "🐻", "🐶", "🐬", "🐟", "🍀", "👀", "🚗", "🍎", "💝", "💙", "👌", "😍", "😉", "😓", "😳", "💪", "💩", "🍸", "🔑", "💖", "🌟", "🎉", "🌺", "🎶", "👠", "🏈", "⚾", "🏆", "👽", "💀", "🐵", "🐮", "🐩", "🐎", "💣", "👃", "👂", "💘", "💜", "👊", "💋", "😘", "😜", "😵", "🙏", "👋", "🚽", "💃", "🚀", "🌙", "⛄", "🌊", "⛵", "🏀", "🎱", "💰", "👶", "👸", "🐰", "🐷", "🐍", "🐫", "🔫", "👄", "🚲", "💛"]
 
 const width = 6
 
@@ -10,8 +10,8 @@ let steps = 0
 
 const bigNumber = 1e10
 
-let localhighest = localStorage.getItem('memHighest')
-if(!localhighest)localStorage.setItem('memHighest', JSON.stringify({1: {time: bigNumber, steps: bigNumber}, 2: {time: bigNumber, steps: bigNumber}, 3: {time: bigNumber, steps: bigNumber}, 4: {time: bigNumber, steps: bigNumber}, 5: {time: bigNumber, steps: bigNumber}, 6: {time: bigNumber, steps: bigNumber}, 7: {time: bigNumber, steps: bigNumber}, 8: {time: bigNumber, steps: bigNumber}}))
+let localhighest = localStorage.getItem("memHighest")
+if(!localhighest)localStorage.setItem("memHighest", JSON.stringify({1: {time: bigNumber, steps: bigNumber}, 2: {time: bigNumber, steps: bigNumber}, 3: {time: bigNumber, steps: bigNumber}, 4: {time: bigNumber, steps: bigNumber}, 5: {time: bigNumber, steps: bigNumber}, 6: {time: bigNumber, steps: bigNumber}, 7: {time: bigNumber, steps: bigNumber}, 8: {time: bigNumber, steps: bigNumber}}))
 localhighest = JSON.parse(localStorage.getItem("memHighest"))
 let name = localStorage.getItem("memName")
 
@@ -109,10 +109,10 @@ function play() {
     if(timerLabel.text() === "0.00") startTimer()
     let jelement = $(this)
     if(jelement.text() !== placeHolder || recentClicked) return
-    jelement.css('transform','scale(-0.001, 1)')
+    jelement.css("transform","scale(-0.001, 1)")
     await sleep(100)
     jelement.text(grid[jelement.index()])
-    jelement.css('transform','scale(1, 1)')
+    jelement.css("transform","scale(1, 1)")
       
     steps++
     $("#steps").text(steps)
@@ -124,13 +124,13 @@ function play() {
       let previous2 = previous
       recentClicked = true
       setTimeout(async function(){
-        jelement2.css('transform','scale(-0.001, 1)')
-        previous2.css('transform','scale(-0.001, 1)')
+        jelement2.css("transform","scale(-0.001, 1)")
+        previous2.css("transform","scale(-0.001, 1)")
         await sleep(100)
         previous2.text(placeHolder)
         jelement2.text(placeHolder)
-        jelement2.css('transform','scale(1, 1)')
-        previous2.css('transform','scale(1, 1)')
+        jelement2.css("transform","scale(1, 1)")
+        previous2.css("transform","scale(1, 1)")
         recentClicked = false
       }, 800)
     }
