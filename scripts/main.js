@@ -14,10 +14,9 @@ let localhighest = localStorage.getItem('memHighest')
 if(!localhighest)localStorage.setItem('memHighest', JSON.stringify({1: {time: bigNumber, steps: bigNumber}, 2: {time: bigNumber, steps: bigNumber}, 3: {time: bigNumber, steps: bigNumber}, 4: {time: bigNumber, steps: bigNumber}, 5: {time: bigNumber, steps: bigNumber}, 6: {time: bigNumber, steps: bigNumber}, 7: {time: bigNumber, steps: bigNumber}, 8: {time: bigNumber, steps: bigNumber}}))
 localhighest = JSON.parse(localStorage.getItem("memHighest"))
 let name = localStorage.getItem("memName")
-console.log(localhighest)
 
 if(name !== null){
-  document.getElementById("playername").innerHTML = `Ваше имя: ${name}. Нажмите для выхода`
+  document.getElementById("playername").innerHTML = `Ваше имя: ${name}. Выход`
   document.getElementById("playername").onclick = () => {
     localStorage.clear()
     location.reload()

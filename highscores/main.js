@@ -7,16 +7,18 @@ document.getElementById("submitName").addEventListener("click", async () => {
   name = document.getElementById("name").value
   if(name.length > 0){
     localStorage.setItem("memName", name)
-    document.getElementById('submitName').innerHTML = 'Загрузка...'
-    
+    document.getElementById('submitName').innerHTML = '<img src="loading.gif" alt="З" style="width: 6vw; height: 6vw;">'
+    let data
     let x = await fetch("https://server.metagames.cf/mem/get", {
       method: "GET",
       headers:{
         "Content-Type":"application/json",
         name: name
       }
+    }).catch(err => {
+      data = "Error"
     })
-    let data = await x.text()
+    if(!data)data = await x.text()
 
     if(data === "Error")
     await fetch("https://server.metagames.cf/mem/set", {
@@ -42,7 +44,8 @@ window.onload = async () => {
   else{
     let tbody = $("tbody")
     let loading = $("#loading")
-    loading.text("Загрузка...")
+    loading.append($("<img/>", {src: "loading.gif", alt: "Загрузка...", style: 
+ "width: 6vw; height: 6vw;"}))
     let r = await fetch("https://server.metagames.cf/mem/getAll", {
       method: 'GET',
       headers:{
