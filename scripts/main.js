@@ -56,7 +56,7 @@ function timer(){
     return timerLabel.text(t)
   }
 
-  if(localhighest[height].time > time){
+  if(localhighest[height].time * localhighest[height].steps > time * steps){
     localhighest[height] = {time: time, steps: steps}
     localStorage.setItem("memHighest", JSON.stringify(localhighest))
     name = localStorage.getItem("memName")
