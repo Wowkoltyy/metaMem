@@ -8,6 +8,8 @@ let timerInterval
 
 let steps = 0
 
+let now = 0;
+
 const bigNumber = 1e10
 
 let localhighest = localStorage.getItem("memHighest")
@@ -49,15 +51,13 @@ function checkWin(){
 }
 
 function timer(){
+  now = (Date.now() - time) / 1000
   if(!checkWin()){
-    time += 0.01
-    let t = time.toFixed(2)
-    time = Number(t)
-    return timerLabel.text(t)
+    return timerLabel.text(now)
   }
 
-  if(localhighest[height].time * localhighest[height].steps > time * steps){
-    localhighest[height] = {time: time, steps: steps}
+  if(localhighest[height].time * localhighest[height].steps > now * steps){
+    localhighest[height] = {time: now, steps: steps}
     localStorage.setItem("memHighest", JSON.stringify(localhighest))
     name = localStorage.getItem("memName")
     if(name !== null)
@@ -72,14 +72,12 @@ function timer(){
           data: localhighest
         })
       })
-      }
-  time = 0
-  
+      }  
   clearInterval(timerInterval)
 }
 
 function startTimer(){
-  time = 0
+  time = Date.now()
   timerInterval = setInterval(timer, 10)
 }
 
